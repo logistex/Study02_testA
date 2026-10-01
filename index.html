@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오늘의 할 일</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <div id="storage-warning" class="warning" role="alert" hidden>
+      저장되지 않습니다. 브라우저 저장소를 사용할 수 없어 새로고침하면 데이터가 사라집니다.
+    </div>
+
+    <header class="header">
+      <h1>📋 오늘의 할 일</h1>
+      <time id="today" class="today"></time>
+    </header>
+
+    <section class="progress" aria-label="진행률">
+      <div id="progress-empty" class="progress-empty" hidden>할 일을 추가해보세요</div>
+      <div id="progress-body">
+        <div class="progress-text">
+          <span>진행률</span>
+          <strong id="progress-text">0/0 (0%)</strong>
+        </div>
+        <div id="progress-bar" class="bar" role="progressbar" aria-label="전체 진행률"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-fill" class="bar-fill"></div>
+        </div>
+        <ul id="progress-categories" class="progress-categories"></ul>
+      </div>
+    </section>
+
+    <form id="add-form" class="add-form">
+      <label class="sr-only" for="add-text">할 일</label>
+      <input id="add-text" type="text" maxlength="100" placeholder="할 일을 입력하세요..." autocomplete="off">
+      <label class="sr-only" for="add-category">카테고리</label>
+      <select id="add-category">
+        <option value="work">업무</option>
+        <option value="personal">개인</option>
+        <option value="study">공부</option>
+      </select>
+      <button type="submit" class="btn primary">추가</button>
+    </form>
+
+    <nav id="filters" class="filters" aria-label="카테고리 필터">
+      <button type="button" data-filter="all">전체</button>
+      <button type="button" data-filter="work">업무</button>
+      <button type="button" data-filter="personal">개인</button>
+      <button type="button" data-filter="study">공부</button>
+    </nav>
+
+    <ul id="todo-list" class="todo-list"></ul>
+    <p id="list-empty" class="list-empty" hidden></p>
+
+    <footer class="footer">
+      <button type="button" id="clear-done" class="btn">완료된 항목 모두 삭제</button>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
